@@ -1,5 +1,6 @@
 import xlrd
 import xlwt
+import xlsxwriter
 import codecs
 
 levels = []
@@ -43,8 +44,8 @@ SEO = []
 children_library = []
 
 # makes the allCategories excel file
-allCategories = xlwt.Workbook(encoding="utf-8")
-allCatSheet = allCategories.add_sheet("All Categories")
+allCategories = xlsxwriter.Workbook("allCategories.xlsx")
+allCatSheet = allCategories.add_worksheet("All Categories")
 
 # puts all the headers in header
 header = []
@@ -62,8 +63,8 @@ header.append("SEO")
 header.append("children_library")
 
 # writes the header for the all categories excel files
-for i in range(0,len(header)):
-    allCatSheet.write(0,i,header[i])
+for col in range(0,len(header)):
+    allCatSheet.write(0,col,header[col])
 
 # counts how many categories currently have been written
 currentCount = 1;
@@ -107,8 +108,8 @@ for index,levelPrefix in enumerate(levels): #levelPrefix = "level_"
         temp_children_library = sheet.col_values(index,1)
 
         #makes the excel file for the input excel file
-        tempExcelFile = xlwt.Workbook(encoding="utf-8")
-        tempSheet = tempExcelFile.add_sheet("Sheet 1")
+        tempExcelFile = xlsxwriter.Workbook(levelPrefix+level+".xlsx")
+        tempSheet = tempExcelFile.add_worksheet("Sheet 1")
 
         # writes the header for the all categories excel files
         for i in range(0,len(header)):
@@ -137,8 +138,8 @@ for index,levelPrefix in enumerate(levels): #levelPrefix = "level_"
             tempSheet.write(tempIndex,10,temp_SEO[i])
             tempSheet.write(tempIndex,11,temp_children_library[i])
 
-        tempExcelFile.save(levelPrefix+level+".xls")
-        print("File Saved.")
+        tempExcelFile.close()
+        print(levelPrefix+level+" Saved.")
 
         # adds on to the big list of all of the columns
         category_id += temp_category_id
@@ -177,13 +178,12 @@ for index in range(1,numTotalCategories+1):
     allCatSheet.write(index,10,SEO[i])
     allCatSheet.write(index,11,children_library[i])
 
-allCategories.save("allCategories.xls")
-
+allCategories.close()
 
 
 # CATEGORY ID LIBRARY
-categoryIDLibrary = xlwt.Workbook(encoding="utf-8")
-sheet1 = categoryIDLibrary.add_sheet("Sheet 1")
+categoryIDLibrary = xlsxwriter.Workbook("categoryIDLibrary.xlsx")
+sheet1 = categoryIDLibrary.add_worksheet("Sheet 1")
 # total number of files
 total_num_files = len(name)
 
@@ -226,8 +226,8 @@ for j in range(0,len(libraryHeader)): # 4 headers
         # writes data in that column
         for k in range(0,remainder):
             sheet1.write(k+1,5*columns+j,libraryElements[j][100*columns+k])
-    
-categoryIDLibrary.save("categoryIDLibrary.xls")
+
+categoryIDLibrary.close()
     
 
 
