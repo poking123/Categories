@@ -1,7 +1,5 @@
 import xlrd
-import xlwt
 import xlsxwriter
-import codecs
 
 levels = []
 levels.append("CILevel1")
@@ -9,7 +7,7 @@ levels.append("CILevel2")
 levels.append("CILevel3")
 
 file_names = []
-
+# ADD FILE NAMES HERE ACCORDING TO LEVEL
 level1 = [] # LEVEL 1
 level1.append("")
 
@@ -69,6 +67,8 @@ for col in range(0,len(header)):
 # counts how many categories currently have been written
 currentCount = 1;
 
+# iterates through the levels and file_names to make an excel file for each
+# category and adds to the big list
 for index,levelPrefix in enumerate(levels): #levelPrefix = "level_"
     for level in file_names[index]: #ex: level = "SignalingPathways"
         # location of the excel file
@@ -130,12 +130,12 @@ for index,levelPrefix in enumerate(levels): #levelPrefix = "level_"
             tempSheet.write(tempIndex,2,temp_top[i])
             tempSheet.write(tempIndex,3,temp_sort_order[i])
             tempSheet.write(tempIndex,4,temp_multiparent[i])
-            tempSheet.write(tempIndex,5,temp_name[i])
-            tempSheet.write(tempIndex,6,temp_description[i])
-            tempSheet.write(tempIndex,7,temp_meta_title[i])
-            tempSheet.write(tempIndex,8,temp_meta_description[i])
-            tempSheet.write(tempIndex,9,temp_meta_keyword[i])
-            tempSheet.write(tempIndex,10,temp_SEO[i])
+            tempSheet.write(tempIndex,5,temp_name[i].strip())
+            tempSheet.write(tempIndex,6,temp_description[i].strip())
+            tempSheet.write(tempIndex,7,temp_meta_title[i].strip())
+            tempSheet.write(tempIndex,8,temp_meta_description[i].strip())
+            tempSheet.write(tempIndex,9,temp_meta_keyword[i].strip())
+            tempSheet.write(tempIndex,10,temp_SEO[i].strip())
             tempSheet.write(tempIndex,11,temp_children_library[i])
 
         tempExcelFile.close()
@@ -170,12 +170,12 @@ for index in range(1,numTotalCategories+1):
     allCatSheet.write(index,2,top[i])
     allCatSheet.write(index,3,sort_order[i])
     allCatSheet.write(index,4,multiparent[i])
-    allCatSheet.write(index,5,name[i])
-    allCatSheet.write(index,6,description[i])
-    allCatSheet.write(index,7,meta_title[i])
-    allCatSheet.write(index,8,meta_description[i])
-    allCatSheet.write(index,9,meta_keyword[i])
-    allCatSheet.write(index,10,SEO[i])
+    allCatSheet.write(index,5,name[i].strip())
+    allCatSheet.write(index,6,description[i].strip())
+    allCatSheet.write(index,7,meta_title[i].strip())
+    allCatSheet.write(index,8,meta_description[i].strip())
+    allCatSheet.write(index,9,meta_keyword[i].strip())
+    allCatSheet.write(index,10,SEO[i].strip())
     allCatSheet.write(index,11,children_library[i])
 
 allCategories.close()
@@ -187,7 +187,7 @@ sheet1 = categoryIDLibrary.add_worksheet("Sheet 1")
 # total number of files
 total_num_files = len(name)
 
-print("total num files is " + str(total_num_files))
+print("Total Number Of Categories: " + str(total_num_files))
 columns = total_num_files // 100
 remainder = total_num_files % 100
 
