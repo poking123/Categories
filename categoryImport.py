@@ -4,7 +4,7 @@ import codecs
 file_name = "allCategories"
 # make sure the path to the excel file you are reading from is correct
 #file_location = "C:/Users/sale/Documents/ChemFarmImports/categoryImportExcel/" + file_name + ".xlsx"
-file_location ="C:/Users/sale/Documents/ChemFarmImports/categoryImportSQL/Python/categoryImportExcelOutput/" + file_name + ".xlsx"
+file_location ="C:/Users/sale/Documents/ChemFarmImports/categoryImportExcel/categoryImportExcelOutput/" + file_name + ".xlsx"
 
 workbook = xlrd.open_workbook(file_location)
 sheet = workbook.sheet_by_index(0)
@@ -139,7 +139,7 @@ oc_category_to_layout += "('" + str(category_id[i]) + "',0,0);\n\n"
 oc_url_alias += "('category_id=" + str(category_id[i]) + "','" + str(SEO[i]) + "');\n\n" 
 
 # writing
-with codecs.open("../categoryImportSQLOutput/"+file_name + ".sql","w","utf-8-sig") as temp:
+with codecs.open("../../categoryImportSQL/categoryImportSQLOutput/categoryImportSQLOutput/"+file_name + ".sql","w","utf-8-sig") as temp:
     
     # deleting
     temp.write(delete_oc_category)

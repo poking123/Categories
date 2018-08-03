@@ -42,7 +42,7 @@ SEO = []
 children_library = []
 
 # makes the allCategories excel file
-allCategories = xlsxwriter.Workbook("../categoryImportExcelOutput/allCategories.xlsx")
+allCategories = xlsxwriter.Workbook("categoryImportExcelOutput/allCategories.xlsx")
 allCatSheet = allCategories.add_worksheet("All Categories")
 
 # puts all the headers in header
@@ -73,7 +73,7 @@ for index,levelPrefix in enumerate(levels): #levelPrefix = "level_"
     for level in file_names[index]: #ex: level = "SignalingPathways"
         # location of the excel file
         file_name = levelPrefix + level
-        file_location = "C:/Users/sale/Documents/ChemFarmImports/categoryImportExcel/sheets/" + file_name + ".xlsx"
+        file_location = "C:/Users/sale/Documents/ChemFarmImports/categoryImportExcel/categoryImportExcelInput/" + file_name + ".xlsx"
 
         #file_location = "C:/Users/brian.gao/Downloads/cFarm/sheets/" + file_name + ".xlsx"
 
@@ -108,7 +108,7 @@ for index,levelPrefix in enumerate(levels): #levelPrefix = "level_"
         temp_children_library = sheet.col_values(index,1)
 
         #makes the excel file for the input excel file
-        tempExcelFile = xlsxwriter.Workbook("../categoryImportExcelOutput/"+levelPrefix+level+".xlsx")
+        tempExcelFile = xlsxwriter.Workbook("../../categoryImportExcel/categoryImportExcelOutput/"+levelPrefix+level+".xlsx")
         tempSheet = tempExcelFile.add_worksheet("Sheet 1")
 
         # writes the header for the all categories excel files
@@ -182,7 +182,7 @@ allCategories.close()
 
 
 # CATEGORY ID LIBRARY
-categoryIDLibrary = xlsxwriter.Workbook("../categoryImportExcelOutput/categoryIDLibrary.xlsx")
+categoryIDLibrary = xlsxwriter.Workbook("../../categoryImportExcel/categoryImportExcelOutput/categoryIDLibrary.xlsx")
 sheet1 = categoryIDLibrary.add_worksheet("Sheet 1")
 # total number of files
 total_num_files = len(name)
