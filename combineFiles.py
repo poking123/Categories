@@ -38,7 +38,7 @@ SEO = []
 children_library = []
 
 # makes the allCategories excel file
-allCategories = xlsxwriter.Workbook("allCategories.xlsx")
+allCategories = xlsxwriter.Workbook("allCategoriesImport.xlsx")
 allCatSheet = allCategories.add_worksheet("All Categories")
 
 # puts all the headers in header
