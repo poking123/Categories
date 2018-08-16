@@ -10,6 +10,7 @@ day = now.day
 
 
 path = "C:/Users/brian.gao/Downloads/cFarm/categoryImport/All_Files"
+
 # goes through the levels
 levelsLabel = []
 levelsLabel.append("/Level_1")
@@ -138,6 +139,7 @@ for index in range(1,len(category_id)+1):
     allCatSheet.write(index,11,children_library[i])
 
 allCategories.close()
+print("allCategoriesImport" + str(year) + "-" + str(month) + "-" + str(day) + ".sql saved.")
 
 
 # CATEGORY ID LIBRARY
@@ -193,6 +195,7 @@ for index in range(2,len(category_id)+1):
 
 
 categoryIDLibrary.close()
+print("categoryIDLibrary" + str(year) + "-" + str(month) + "-" + str(day) + ".sql saved")
 
 print("Total Number Of Categories: " + str(total_num_files))
 
