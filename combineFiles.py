@@ -1,6 +1,12 @@
 import xlrd
 import xlsxwriter
 import os
+import datetime
+
+now = datetime.datetime.now()
+year = now.year
+month = now.month
+day = now.day
 
 
 path = "C:/Users/brian.gao/Downloads/cFarm/categoryImport/All_Files"
@@ -38,7 +44,7 @@ SEO = []
 children_library = []
 
 # makes the allCategories excel file
-allCategories = xlsxwriter.Workbook("allCategoriesImport.xlsx")
+allCategories = xlsxwriter.Workbook("allCategoriesImport" + str(year) + "-" + str(month) + "-" + str(day) + ".xlsx")
 allCatSheet = allCategories.add_worksheet("All Categories")
 
 # puts all the headers in header
@@ -135,7 +141,7 @@ allCategories.close()
 
 
 # CATEGORY ID LIBRARY
-categoryIDLibrary = xlsxwriter.Workbook("categoryIDLibrary.xlsx")
+categoryIDLibrary = xlsxwriter.Workbook("categoryIDLibrary" + str(year) + "-" + str(month) + "-" + str(day) + ".xlsx")
 sheet1 = categoryIDLibrary.add_worksheet("Sheet 1")
 # total number of files
 total_num_files = len(name)
