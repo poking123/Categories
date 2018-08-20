@@ -1,10 +1,17 @@
 import xlrd
 import xlsxwriter
 import os
+import datetime
+
+now = datetime.datetime.now()
+year = now.year
+month = now.month
+day = now.day
 
 
-#path = "C:/Users/brian.gao/Downloads/cFarm/categoryImport/All_Files"
 path = "C:/Users/sale/Documents/ChemFarmImports/categoryImportExcel/categoryImportExcelInput/All_Files"
+
+
 # goes through the levels
 levelsLabel = []
 levelsLabel.append("/Level_1")
@@ -39,7 +46,7 @@ SEO = []
 children_library = []
 
 # makes the allCategories excel file
-allCategories = xlsxwriter.Workbook("../../categoryImportExcel/categoryImportExcelOutput/allCategoriesImport.xlsx")
+allCategories = xlsxwriter.Workbook("../../categoryImportExcel/categoryImportExcelOutput/allCategoriesImport" + str(year) + "-" + str(month) + "-" + str(day) + ".xlsx")
 allCatSheet = allCategories.add_worksheet("All Categories")
 
 # puts all the headers in header
@@ -133,10 +140,11 @@ for index in range(1,len(category_id)+1):
     allCatSheet.write(index,11,children_library[i])
 
 allCategories.close()
+print("allCategoriesImport" + str(year) + "-" + str(month) + "-" + str(day) + ".sql saved.")
 
 
 # CATEGORY ID LIBRARY
-categoryIDLibrary = xlsxwriter.Workbook("../../categoryImportExcel/categoryImportExcelOutput/categoryIDLibrary.xlsx")
+categoryIDLibrary = xlsxwriter.Workbook("categoryIDLibrary" + str(year) + "-" + str(month) + "-" + str(day) + ".xlsx")
 sheet1 = categoryIDLibrary.add_worksheet("Sheet 1")
 # total number of files
 total_num_files = len(name)
@@ -188,6 +196,8 @@ for index in range(2,len(category_id)+1):
 
 
 categoryIDLibrary.close()
+print("categoryIDLibrary" + str(year) + "-" + str(month) + "-" + str(day) + ".sql saved")
+
 
 print("Total Number Of Categories: " + str(total_num_files))
 
