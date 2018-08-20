@@ -1,7 +1,7 @@
 import xlrd
 import codecs
 
-file_name = "allCategories"
+file_name = "allCategoriesImport"
 # make sure the path to the excel file you are reading from is correct
 #file_location = "C:/Users/sale/Documents/ChemFarmImports/categoryImportExcel/" + file_name + ".xlsx"
 file_location ="C:/Users/sale/Documents/ChemFarmImports/categoryImportExcel/categoryImportExcelOutput/" + file_name + ".xlsx"
@@ -82,7 +82,7 @@ for i in range(len(category_id)-1):
     
 
     # oc_category_description
-    oc_category_description += "('" + str(category_id[i]) + "',1,'" + str(name[i]) + "','" + str(description[i]) + "','" + str(meta_title[i]) + "','" + str(meta_description[i]) + "','" + str(meta_keyword[i]) + "'),\n"
+    oc_category_description += '("' + str(category_id[i]) + '",1,"' + str(name[i]) + '","' + str(description[i]) + '","' + str(meta_title[i]) + '","' + str(meta_description[i]) + '","' + str(meta_keyword[i]) + '"),\n'
                                          
     # oc_category_path
     oc_category_path += "('" + str(category_id[i]) + "','" + str(category_id[i]) + "',0),\n"
@@ -124,7 +124,7 @@ if (multiparent[i]):
         oc_category_multiparent += "('" + str(category_id[i]) + "','" + str(multiparent[i]) + "');\n\n"
     
 # oc_category_description
-oc_category_description += "('" + str(category_id[i]) + "',1,'" + str(name[i]) + "','" + str(description[i]) + "','" + str(meta_title[i]) + "','" + str(meta_description[i]) + "','" + str(meta_keyword[i]) + "');\n\n"                                         
+oc_category_description += '("' + str(category_id[i]) + '",1,"' + str(name[i]) + '","' + str(description[i]) + '","' + str(meta_title[i]) + '","' + str(meta_description[i]) + '","' + str(meta_keyword[i]) + '");\n\n'                                         
 
 # oc_category_path
 oc_category_path += "('" + str(category_id[i]) + "','" + str(category_id[i]) + "',0);\n\n"
@@ -139,7 +139,7 @@ oc_category_to_layout += "('" + str(category_id[i]) + "',0,0);\n\n"
 oc_url_alias += "('category_id=" + str(category_id[i]) + "','" + str(SEO[i]) + "');\n\n" 
 
 # writing
-with codecs.open("../../categoryImportSQL/categoryImportSQLOutput/categoryImportSQLOutput/"+file_name + ".sql","w","utf-8-sig") as temp:
+with codecs.open("../../categoryImportSQL/categoryImportSQLOutput/"+file_name + ".sql","w","utf-8-sig") as temp:
     
     # deleting
     temp.write(delete_oc_category)
@@ -163,3 +163,5 @@ with codecs.open("../../categoryImportSQL/categoryImportSQLOutput/categoryImport
 
 
     temp.close()
+
+print(file_name + ".sql Saved.");
