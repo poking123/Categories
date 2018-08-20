@@ -140,11 +140,11 @@ for index in range(1,len(category_id)+1):
     allCatSheet.write(index,11,children_library[i])
 
 allCategories.close()
-print("allCategoriesImport" + str(year) + "-" + str(month) + "-" + str(day) + ".sql saved.")
+print("allCategoriesImport" + str(year) + "-" + str(month) + "-" + str(day) + ".xlsx saved.")
 
 
 # CATEGORY ID LIBRARY
-categoryIDLibrary = xlsxwriter.Workbook("categoryIDLibrary" + str(year) + "-" + str(month) + "-" + str(day) + ".xlsx")
+categoryIDLibrary = xlsxwriter.Workbook("../../categoryImportExcel/categoryImportExcelOutput/categoryIDLibrary" + str(year) + "-" + str(month) + "-" + str(day) + ".xlsx")
 sheet1 = categoryIDLibrary.add_worksheet("Sheet 1")
 # total number of files
 total_num_files = len(name)
@@ -196,7 +196,7 @@ for index in range(2,len(category_id)+1):
 
 
 categoryIDLibrary.close()
-print("categoryIDLibrary" + str(year) + "-" + str(month) + "-" + str(day) + ".sql saved")
+print("categoryIDLibrary" + str(year) + "-" + str(month) + "-" + str(day) + ".xlsx saved")
 
 
 print("Total Number Of Categories: " + str(total_num_files))
